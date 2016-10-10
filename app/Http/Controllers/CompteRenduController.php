@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+
 
 class CompteRenduController extends Controller
 {
@@ -25,7 +28,9 @@ class CompteRenduController extends Controller
      */
     public function create()
     {
-        return view('create_cr');
+//        $users = User::all()->lists('name', 'id');
+
+        return view('CR.create')->with(compact('users'));
     }
 
     /**
