@@ -1,3 +1,4 @@
+
 /vendor
 /node_modules
 /public/storage
@@ -9,3 +10,20 @@ Homestead.json
 **/.idea/tasks.xml
 .DS_Store
 /config
+vendor/
+node_modules/
+.idea/workspace.xml
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+bootstrap/cache/
+.env.*.php
+.env.php
+.env
+
+# Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
+.rocketeer/
+>>>>>>> 4c84439bce318df99c22a4fa968bf38bcbacd274
