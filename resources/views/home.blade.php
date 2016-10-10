@@ -10,6 +10,12 @@
                 <div class="panel-body">
 
                     <p> Liste de projets </p>
+                    @foreach ($projets as $projet)
+                    <hr />
+                      {{$projet->name}}
+                      {{$projet->graph}}
+                      <hr />
+                    @endforeach
                 </div>
             </div>
         </div>
