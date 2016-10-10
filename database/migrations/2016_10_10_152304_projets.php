@@ -13,6 +13,16 @@ class Projets extends Migration
     public function up()
     {
         //
+        Schema::create('projets', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+            $table->boolean('gaant');
+            $table->boolean('cdc');
+            $table->binary('cdcs');
+            $table->boolean('contenu');
+            $table->boolean('graph');
+        });
     }
 
     /**
@@ -23,5 +33,6 @@ class Projets extends Migration
     public function down()
     {
         //
+        Schema::drop('projets');
     }
 }

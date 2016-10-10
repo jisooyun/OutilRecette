@@ -13,6 +13,11 @@ class Metiers extends Migration
     public function up()
     {
         //
+        Schema::create('metiers', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('membre');
+            $table->string('metier');
+        });
     }
 
     /**
@@ -23,5 +28,6 @@ class Metiers extends Migration
     public function down()
     {
         //
+        Schema::drop('metiers');
     }
 }
