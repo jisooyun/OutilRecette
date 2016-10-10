@@ -17,4 +17,15 @@ Route::get('/', function () {
 
 Route::auth();
 
+Route::get('/create_cr', 'CompteRenduController@create');
+
+Route::get('/create_projet', 'ProjetController@create');
+
 Route::get('/home', 'HomeController@index');
+
+Route::get('/single_cr', 'CompteRenduController@index');
+
+Route::get('/single_projet', 'ProjetController@index');
+
+
+
