@@ -118,4 +118,11 @@ class CompteRenduController extends Controller
     {
         //
     }
+
+    public function single($id)
+    {
+//        $cr = Compte_rendu::find($id);
+//        return view('CR.single');
+    }
+
 }
