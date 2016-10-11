@@ -38,8 +38,7 @@ class ProjetController extends Controller
     {
         //
         $projet = Projet::create([
-          'global' => $request->global,
-          'infos' => $request->infos,
+          'name' => $request->nom_projet,
     ]);
 
     return redirect('/');
