@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid">
-{!! Form::open(['url' => route('projets.store'), 'method' => 'POST']) !!}
+{!! Form::open(['url' => route('projets.store'), 'method' => 'POST', 'files' => true]) !!}
 
 <div class="form-group">
 {!! Form::text('nom_projet', null, [
@@ -14,8 +14,15 @@
 
 <div class="form-group">
     <p>Cahier des Charges</p>
-    <h5>Oui {!!  Form::radio('cdc', '1'); !!}
+    <h5>Oui {!!  Form::radio('cdc', '1') !!}
         Non {!!  Form::radio('cdc', '0', true) !!}</h5>
+</div>
+
+<p>Si oui,</p>
+<div class="form-group">
+
+    {!! Form::file('cdcs',null,['class'=>'form-control']) !!}
+
 </div>
 
 <div class="form-group">

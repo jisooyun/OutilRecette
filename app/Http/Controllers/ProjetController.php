@@ -36,14 +36,18 @@ class ProjetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
         $projet = Projet::create([
           'name' => $request->nom_projet,
           'gaant' => $request->gaant,
           'cdc' => $request->cdc,
           'contenu' => $request->contenu,
           'graph' => $request->graph,
-    ]);
+          'cdcs' => $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdc')
+
+        ]);
+
 
     return redirect('/');
     }

@@ -31,7 +31,7 @@ class CompteRendu extends Migration
             $table->string('negatif');
             //Champs text en fonction des metiers
             $table->string('client');
-            $table->string('piece-joint');
+            $table->string('gantt');
         });
     }
 
