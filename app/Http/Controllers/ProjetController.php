@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Metier;
 use Illuminate\Http\Request;
 use App\Projet;
 use App\Http\Requests;
@@ -44,10 +45,13 @@ class ProjetController extends Controller
           'cdc' => $request->cdc,
           'contenu' => $request->contenu,
           'graph' => $request->graph,
-          'cdcs' => $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdc')
+            'cdcs' => $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdc')
 
         ]);
 
+        $membre = Metier::create([
+            'membre' => $request->nom,
+        ]);
 
     return redirect('/');
     }
@@ -66,6 +70,9 @@ class ProjetController extends Controller
             return redirect()->to('/projets');
         }
 
+        $membre = Metier::find($id);
+
+
         return view('projets.show')->with(compact('projet'));
     }
 
@@ -78,6 +85,18 @@ class ProjetController extends Controller
     public function edit($id)
     {
         //
+        $projet = Projet::find($id);
+        $Metiers = Metier::all();
+
+        $metiers = [];
+        foreach($metiers as $metier){
+            if($metier->id_projet == $id){
+                array_push($metiers, $metier);
+            }
+        }
+
+
+        return view('projets.edit')->with(compact('projet', 'metiers'));
     }
 
     /**
@@ -90,6 +109,18 @@ class ProjetController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $projet = Projet::find($id);
+
+        // Projet::where('id', $id)
+        //       ->update(['name' => "bana"]);
+
+        $projet->name = $request->nom_projet;
+        $projet->gaant = $request->gaant;
+        $projet->contenu = $request->contenu;
+        $projet->graph = $request->graph;
+
+        $projet->save();
+        return redirect()->route('projets.show', $projet->id);
     }
 
     /**

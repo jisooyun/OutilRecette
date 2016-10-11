@@ -75,6 +75,12 @@
                           Faire un compte rendu
                         </button>
                       </a>
+
+                      <a href="{{route('projets.edit', $projet->id)}}">
+                        <button class="btn btn-success">
+                          Modifer Projet
+                        </button>
+                      </a>
                 </div>
             </div>
         </div>

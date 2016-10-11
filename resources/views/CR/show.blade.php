@@ -16,8 +16,15 @@
                         <hr />
                         <p> Liste de CR </p>
                          @foreach ($crsT as $cr)
-                            {{--<a href="{{route('CR.single', $cr->id)}}">{{$cr->created_at}}</a> <br>--}}
+
                             {{$cr->created_at}} <br>
+                            <a href="{{route('CR.single.show', [$cr->id , $cr->id_projet])}}">
+                              <button class="btn btn-info">
+                                Voir les compte rendu
+                              </button>
+                            </a>
+                            <br />
+
                         @endforeach
                     </div>
                 </div>

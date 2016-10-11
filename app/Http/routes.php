@@ -19,12 +19,12 @@ Route::auth();
 
 // Route::get('/create_cr/{id}', 'CompteRenduController@index');
 Route::resource('/CR', 'CompteRenduController');
-
+Route::resource('/CR.single', 'CompteRenduController@single');
 // create_cr/create
 
 Route::resource('/projets', 'ProjetController');
 
-Route::get('/home', 'HomeController@index');
+Route::resource('/home', 'HomeController@index');
 
 // Route::resource('/single_cr', 'CompteRenduController@index');
 

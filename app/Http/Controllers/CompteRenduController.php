@@ -94,6 +94,7 @@ class CompteRenduController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -119,10 +120,10 @@ class CompteRenduController extends Controller
         //
     }
 
-    public function single($id)
+    public function single($id, $id_projet)
     {
-//        $cr = Compte_rendu::find($id);
-//        return view('CR.single');
+       $cr = Compte_rendu::find($id);
+       return view('CR.single')->with(compact('cr'));
     }
 
 }
