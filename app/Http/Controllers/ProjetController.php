@@ -25,7 +25,12 @@ class ProjetController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         return view('projets.create');
+=======
+        return view('create_projet')->with(compact('projet'));
+
+>>>>>>> 3643689a315bf0429d695633e9ee871fee546dcc
     }
 
     /**
@@ -36,6 +41,7 @@ class ProjetController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         //
         $projet = Projet::create([
           'global' => $request->global,
@@ -43,6 +49,11 @@ class ProjetController extends Controller
     ]);
 
     return redirect('/');
+=======
+        $projet = new Projet;
+        $projet->name = $request->name;
+        $projet->save();
+>>>>>>> 3643689a315bf0429d695633e9ee871fee546dcc
     }
 
     /**
