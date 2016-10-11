@@ -50,6 +50,68 @@
             'placeholder' => 'Liens relatifs']) !!}
         </div>
 
+        <div class="form-group">
+            <h5>Lundi
+            {!! Form::text('lundi', null, [
+            'class' => 'form-control',
+            'placeholder' => 'Tâches effectuées']) !!}</h5>
+
+        </div>
+
+        <div class="form-group">
+            <h5>Mardi
+                {!! Form::text('mardi', null, [
+                'class' => 'form-control',
+                'placeholder' => 'Tâches effectuées']) !!}</h5>
+
+        </div>
+
+
+        <div class="form-group">
+            <h5>Mercredi
+                {!! Form::text('mercredi', null, [
+                'class' => 'form-control',
+                'placeholder' => 'Tâches effectuées']) !!}</h5>
+
+        </div>
+
+
+        <div class="form-group">
+            <h5>Jeudi
+                {!! Form::text('jeudi', null, [
+                'class' => 'form-control',
+                'placeholder' => 'Tâches effectuées']) !!}</h5>
+
+        </div>
+
+
+        <div class="form-group">
+            <h5>Vendredi
+                {!! Form::text('vendredi', null, [
+                'class' => 'form-control',
+                'placeholder' => 'Tâches effectuées']) !!}</h5>
+
+        </div>
+
+
+        <div class="form-group">
+            <h5>Samedi
+                {!! Form::text('samedi', null, [
+                'class' => 'form-control',
+                'placeholder' => 'Tâches effectuées']) !!}</h5>
+
+        </div>
+
+
+        <div class="form-group">
+            <h5>Dimanche
+                {!! Form::text('dimanche', null, [
+                'class' => 'form-control',
+                'placeholder' => 'Tâches effectuées']) !!}</h5>
+
+        </div>
+
+
         <h3 class="text-center">MÉTIER</h3>
 
 
@@ -65,34 +127,12 @@
 
 
         <div class="form-group">
-            {!! Form::textarea('UX', null, [
+            {!! Form::textarea('metier', null, [
             'class' => 'form-control',
-            'placeholder' => 'Brief métier UX']) !!}
+            'placeholder' => 'Brief métier']) !!}
         </div>
 
-        <div class="form-group">
-            {!! Form::textarea('graphisme', null, [
-            'class' => 'form-control',
-            'placeholder' => 'Brief métier graphisme']) !!}
-        </div>
 
-        <div class="form-group">
-            {!! Form::textarea('dev', null, [
-            'class' => 'form-control',
-            'placeholder' => 'Brief métier développement']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::textarea('front', null, [
-            'class' => 'form-control',
-            'placeholder' => 'Brief métier front']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::textarea('market', null, [
-            'class' => 'form-control',
-            'placeholder' => 'Brief métier marketing']) !!}
-        </div>
 
         <div class="form-group">
             {!! Form::text('client', null, [
