@@ -17,15 +17,13 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/create_cr', 'CompteRenduController@create');
+Route::resource('/create_cr', 'CompteRenduController');
+// create_cr/create
 
 Route::get('/create_projet', 'ProjetController@create');
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/single_cr', 'CompteRenduController@index');
+// Route::resource('/single_cr', 'CompteRenduController@index');
 
 Route::get('/single_projet', 'ProjetController@index');
-
-
-

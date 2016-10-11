@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-
+use App\Compte_rendu;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,9 +28,9 @@ class CompteRenduController extends Controller
      */
     public function create()
     {
-//        $users = User::all()->lists('name', 'id');
+       $users = User::all();
 
-        return view('CR.create')->with(compact('users'));
+        return view('cr.create')->with(compact('users'));
     }
 
     /**
@@ -42,6 +42,18 @@ class CompteRenduController extends Controller
     public function store(Request $request)
     {
         //
+        // $cr = new Compte_rendu;
+        //     $cr->global = $request->global;
+        //     $cr->description = $request->infos;
+        //     $post->save();
+
+            $cr = Compte_rendu::create([
+              'global' => $request->global,
+              'infos' => $request->infos,
+        ]);
+
+        return Redirect::to('/');;
+        // return redirect()->route('single_projet', $projet->id);
     }
 
     /**

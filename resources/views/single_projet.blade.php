@@ -8,6 +8,8 @@
                     <div class="panel-heading">Compte-rendus</div>
 
                     <div class="panel-body">
+                        <a href="{{route('create_cr.create')}}">create cr </a>
+                        <hr />
                         <p> Liste de CR </p>
                     </div>
                 </div>

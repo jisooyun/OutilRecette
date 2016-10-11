@@ -5,9 +5,18 @@
         <h1 class="text-center">CRÉATION D'UN COMPTE RENDU</h1>
 
 
-        {!! Form::open(['method' => 'POST']) !!}
+        <!-- {!! Form::open(['method' => 'POST']) !!} -->
+        {!! Form::open(['url' => route('create_cr.store'), 'method' => 'POST']) !!}
 
         <h4>PAR : {{\Illuminate\Support\Facades\Auth::user()->name}}</h4>
+
+        <h3 class="text-center">INFOS</h3>
+
+        <div class="form-group">
+            {!! Form::textarea('infos', null, [
+            'class' => 'form-control',
+            'placeholder' => 'Compte rendu global du cycle']) !!}
+        </div>
 
         <h3 class="text-center">GLOBAL</h3>
 
