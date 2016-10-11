@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Metier;
 use Illuminate\Http\Request;
 use App\Projet;
 use App\Http\Requests;
@@ -43,6 +44,10 @@ class ProjetController extends Controller
           'cdc' => $request->cdc,
           'contenu' => $request->contenu,
           'graph' => $request->graph,
+
+        $membre = Metier::create([
+            'membre' => $request->nom,
+        ])
     ]);
 
     return redirect('/');
@@ -61,6 +66,9 @@ class ProjetController extends Controller
         if(!$projet) {
             return redirect()->to('/projets');
         }
+
+        $membre = Metier::find($id);
+
 
         return view('projets.show')->with(compact('projet'));
     }

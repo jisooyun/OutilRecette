@@ -39,8 +39,19 @@
         Non {!!  Form::radio('graph', '0', true) !!}</h5>
 </div>
 
-<div class="form-group">{!! Form::submit('Envoyer', ['class' => 'btn btn-success']) !!}
+    <h4>ÉQUIPE</h4>
+    <div class="form-group">
+        {!! Form::text('nom', null, [
+        'class' => 'form-control',
+        'placeholder' => 'NOM 1']) !!}
+    </div>
+
+
+
+
+    <div class="form-group">{!! Form::submit('Envoyer', ['class' => 'btn btn-success']) !!}
 {!! Form::close() !!}
 </div>
+
 </div>
     @endsection
