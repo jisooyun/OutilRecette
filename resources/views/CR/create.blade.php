@@ -6,7 +6,7 @@
 
 
         <!-- {!! Form::open(['method' => 'POST']) !!} -->
-        {!! Form::open(['url' => route('create_cr.store'), 'method' => 'POST']) !!}
+        {!! Form::open(['url' => route('CR.store'), 'method' => 'POST']) !!}
 
         <h4>PAR : {{\Illuminate\Support\Facades\Auth::user()->name}}</h4>
 

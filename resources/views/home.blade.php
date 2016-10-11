@@ -14,6 +14,11 @@
                     <hr />
                       {{$projet->name}}
                       {{$projet->graph}}
+                      <a href="{{route('projets.show', $projet->id)}}">
+                        <button class="btn btn-info">
+                          Voir le projet
+                        </button>
+                      </a>
                       <hr />
                     @endforeach
                 </div>
