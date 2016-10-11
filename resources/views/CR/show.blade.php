@@ -8,7 +8,11 @@
                     <div class="panel-heading">Compte-rendus du projet</div>
 
                     <div class="panel-body">
-                        <a href="{{route('CR.create')}}">CREER COMPTE RENDU </a>
+                        <a href="{{route('CR.create')}}">
+                            <button class="btn btn-info">
+                                Faire un compte rendu
+                            </button>
+                        </a>
                         <hr />
                         <p> Liste de CR </p>
                          @foreach ($crsT as $cr)
