@@ -69,10 +69,20 @@ class CompteRenduController extends Controller
      */
     public function show($id)
     {
-        //
-        // $crs = Compte_rendu::all();
-        $crs = Compte_rendu::where('id_projet' ,$id);
-          return view('CR.show')->with(compact('crs'));
+
+        $crs = Compte_rendu::all();
+//        $crs = Compte_rendu::where('id_projet' ,$id);
+
+        $crsT = [];
+        foreach($crs as $cr){
+            if($cr->id_projet==$id){
+                array_push($crsT, $cr);
+            }
+        }
+
+
+        return view('CR.show')->with(compact('crsT'));
+
     }
 
     /**
