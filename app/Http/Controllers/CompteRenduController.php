@@ -28,20 +28,22 @@ class CompteRenduController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
        $users = User::all();
+       $projet = Projet::find($request->invisible);
 
-        return view('CR.create')->with(compact('users'));
+        return view('CR.create')->with(compact('users','projet'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -55,6 +57,19 @@ class CompteRenduController extends Controller
             $cr = Compte_rendu::create([
               'global' => $request->global,
               'infos' => $request->infos,
+              'positif' => $request->positif,
+              'negatif' => $request->negatif,
+              'piece-joint' => $request->piece,
+              'liens' => $request->liens,
+              'lundi' => $request->lundi,
+              'mardi' => $request->mardi,
+              'mercredi' => $request->mercredi,
+              'jeudi' => $request->jeudi,
+              'vendredi' =>$request->vendredi,
+              'samedi' => $request->samedi,
+              'dimanche' => $request->dimanche,
+              'client' => $request->client,
+              'id_projet' =>$request->invisible,
         ]);
 
         return redirect('/');

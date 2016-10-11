@@ -39,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::text('piece-joint', null, [
+            {!! Form::text('piece', null, [
             'class' => 'form-control',
             'placeholder' => 'Pièces jointes']) !!}
         </div>
