@@ -5,44 +5,61 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Projet n°{{$projet->id}}</div>
+                <div class="panel-heading">Projet n°{{$projet->id}} | {{$projet->name}} </div>
 
                 <div class="panel-body">
-
-                    <h3>Projet {{$projet->name}} </h3>
-                      <hr />
-
-                      <p>
-                        Il y a
-                      </p>
                       <ul>
                         @if( $projet->gaant == 1)
                         <p>
                           <li>
-                            Un gant
+                            Planning de Gantt : OUI
                           </li>
                         </p>
+                            @else
+                              <p>
+                              <li>
+                                  Planning de Gantt : NON
+                              </li>
+                              </p>
                         @endif
                         @if( $projet->cdc == 1)
                         <p>
                           <li>
-                            Un cdc
+                            Cahier des charges : OUI
                           </li>
                         </p>
+                            @else
+                                <p>
+                                <li>
+                                    Cahier des charges : NON
+                                </li>
+                                </p>
                         @endif
                         @if( $projet->contenu == 1)
                         <p>
                           <li>
-                            Un du contenu
+                            Présence de contenus : OUI
                           </li>
                         </p>
+                            @else
+                                <p>
+                                <li>
+                                    Présence de contenus : NON
+                                </li>
+                                </p>
                         @endif
                         @if( $projet->graph == 1)
                         <p>
                           <li>
-                            Un des visu
+                            Pistes graphiques : OUI
                           </li>
                         </p>
+                            @else
+                                <p>
+                                <li>
+                                    Pistes graphiques: NON
+                                </li>
+                                </p>
                         @endif
                       </ul>
 
