@@ -20,10 +20,11 @@ class Compte_rendu extends Model
         'dimanche',
         'negatif',
         'client',
-        'piece-joint'
+        'piece-joint',
+        'id_projet'
     ];
 
-    public function id_projet() {
-        return $this->belongsTo('App\Models\Projet');
-    }
+    // public function id_projet() {
+    //     return $this->belongsTo('App\Models\Projet');
+    // }
 }

@@ -140,7 +140,7 @@
             'placeholder' => 'Informations dépendantes du client']) !!}
         </div>
 
-
+        {{ Form::hidden('invisible', Request::segment(3) ) }}
 
 
         {!! Form::submit('Envoyer', ['class' => 'btn btn-success']) !!}

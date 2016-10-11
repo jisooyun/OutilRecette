@@ -37,18 +37,24 @@ class ProjetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
         $projet = Projet::create([
           'name' => $request->nom_projet,
           'gaant' => $request->gaant,
           'cdc' => $request->cdc,
           'contenu' => $request->contenu,
           'graph' => $request->graph,
+          'debut' => $request->debut,
+          'fin' => $request->fin,
+          'archive' => 0,
+            'cdcs' => $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdc')
+
+        ]);
 
         $membre = Metier::create([
             'membre' => $request->nom,
-        ])
-    ]);
+        ]);
 
     return redirect('/');
     }
@@ -115,6 +121,10 @@ class ProjetController extends Controller
         $projet->gaant = $request->gaant;
         $projet->contenu = $request->contenu;
         $projet->graph = $request->graph;
+        $projet->archive  = $request->fini;
+        $projet->debut = $request->debut;
+        $projet->fin = $request->fin;
+        $projet->cdcs = $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdcv2');
 
         $projet->save();
         return redirect()->route('projets.show', $projet->id);

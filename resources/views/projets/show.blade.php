@@ -70,14 +70,14 @@
                         </button>
                       </a>
 
-                      <!-- <a href="{{route('CR.create', $projet->id)}}"> -->
-                      <a>
-                        {!! Form::open(['url' => route('CR.create'), 'method' => 'POST']) !!}
-                        {{ Form::hidden('invisible', $projet->id) }}
-                        <!-- <button class="btn btn-info"> -->
-                          {!! Form::submit('Envoyer', ['class' => 'btn btn-info']) !!}
+                      <a href="{{route('CR.edit', $projet->id)}}">
+
+                        <!-- {!! Form::open(['url' => route('CR.create' , $projet->id), 'method' => 'PUT']) !!} -->
+                        <!-- {{ Form::hidden('invisible', $projet->id) }} -->
+                        <button class="btn btn-info">
+                          <!-- {!! Form::submit('Faire un compte rendu', ['class' => 'btn btn-info']) !!} -->
                           Faire un compte rendu
-                        <!-- </button> -->
+                        </button>
                       </a>
 
                       <a href="{{route('projets.edit', $projet->id)}}">

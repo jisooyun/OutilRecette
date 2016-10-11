@@ -13,7 +13,10 @@ class Projet extends Model
         'cdc',
         'cdcs',
         'contenu',
-        'graph'
+        'graph',
+        'archive',
+        'debut',
+        'fin'
     ];
 
     // si var user depend d'une autre tab/model

@@ -29,14 +29,14 @@ class CompteRenduController extends Controller
     /**
      * Show the form for creating a new resource.
      * @param  \Illuminate\Http\Request  $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
        $users = User::all();
-       $projet = Projet::find($request->invisible);
 
-        return view('CR.create')->with(compact('users','projet'));
+        return view('CR.create')->with(compact('users'));
     }
 
     /**
@@ -55,6 +55,7 @@ class CompteRenduController extends Controller
         //     $post->save();
 
             $cr = Compte_rendu::create([
+              'id_projet' =>$request->invisible,
               'global' => $request->global,
               'infos' => $request->infos,
               'positif' => $request->positif,
@@ -69,7 +70,6 @@ class CompteRenduController extends Controller
               'samedi' => $request->samedi,
               'dimanche' => $request->dimanche,
               'client' => $request->client,
-              'id_projet' =>$request->invisible,
         ]);
 
         return redirect('/');
@@ -109,6 +109,9 @@ class CompteRenduController extends Controller
     public function edit($id)
     {
         //
+        $projet = Projet::find($id);
+
+        return view('CR.edit')->with(compact('projet'));
 
     }
 

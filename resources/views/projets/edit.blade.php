@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid">
-{!! Form::open(['url' => route('projets.update', $projet->id), 'method' => 'PUT']) !!}
+{!! Form::open(['url' => route('projets.update', $projet->id), 'method' => 'PUT', 'files' => true]) !!}
 {{csrf_field()}}
 <div class="form-group">
 {!! Form::text('nom_projet', $projet->name, [
@@ -14,21 +14,27 @@
 <div class="form-group">
     <p>Cahier des Charges</p>
     @if($projet->cdc == 0)
-    <h5>Oui {!!  Form::radio('cdc', '1'); !!}
+    <h5>Oui {!!  Form::radio('cdc', '1') !!}
         Non {!!  Form::radio('cdc', '0', true) !!}</h5>
     @else
-    <h5>Oui {!!  Form::radio('cdc', '1', true); !!}
+    <h5>Oui {!!  Form::radio('cdc', '1', true) !!}
         Non {!!  Form::radio('cdc', '0') !!}</h5>
     @endif
 </div>
 
+    <div class="form-group">
+
+        {!! Form::file('cdcs', null,['class'=>'form-control']) !!}
+
+    </div>
+
 <div class="form-group">
     <p>Planning de Gantt</p>
     @if($projet->gaant == 0)
-    <h5>Oui {!!  Form::radio('gaant', '1'); !!}
+    <h5>Oui {!!  Form::radio('gaant', '1') !!}
         Non {!!  Form::radio('gaant', '0', true) !!}</h5>
     @else
-    <h5>Oui {!!  Form::radio('gaant', '1', true); !!}
+    <h5>Oui {!!  Form::radio('gaant', '1', true) !!}
         Non {!!  Form::radio('gaant', '0') !!}</h5>
     @endif
 </div>
@@ -36,10 +42,10 @@
 <div class="form-group">
     <p>Présence de contenu</p>
     @if($projet->contenu == 0)
-    <h5>Oui {!!  Form::radio('contenu', '1'); !!}
+    <h5>Oui {!!  Form::radio('contenu', '1') !!}
         Non {!!  Form::radio('contenu', '0', true) !!}</h5>
     @else
-    <h5>Oui {!!  Form::radio('contenu', '1', true); !!}
+    <h5>Oui {!!  Form::radio('contenu', '1', true) !!}
         Non {!!  Form::radio('contenu', '0') !!}</h5>
     @endif
 </div>
@@ -47,10 +53,10 @@
 <div class="form-group">
     <p>Graphisme</p>
     @if($projet->graph == 0)
-    <h5>Oui {!!  Form::radio('graph', '1'); !!}
+    <h5>Oui {!!  Form::radio('graph', '1') !!}
         Non {!!  Form::radio('graph', '0', true) !!}</h5>
     @else
-    <h5>Oui {!!  Form::radio('graph', '1', true); !!}
+    <h5>Oui {!!  Form::radio('graph', '1', true) !!}
         Non {!!  Form::radio('graph', '0') !!}</h5>
     @endif
 </div>
@@ -62,6 +68,14 @@
         'placeholder' => 'NOM 1']) !!}
     </div>
 
+    <div class="form-group">
+        @if($projet->archive == 0)
+        <p>Fini?</p>
+        <h5>Oui {!!  Form::radio('fini', '1') !!}
+            Non {!!  Form::radio('fini', '0', true) !!}</h5>
+        @else
+        @endif
+    </div>
 
 
 

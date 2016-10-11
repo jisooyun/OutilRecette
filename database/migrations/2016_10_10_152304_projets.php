@@ -12,7 +12,7 @@ class Projets extends Migration
      */
     public function up()
     {
-        //
+
         Schema::create('projets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -22,6 +22,9 @@ class Projets extends Migration
             $table->binary('cdcs');
             $table->boolean('contenu');
             $table->boolean('graph');
+            $table->boolean('archive');
+            $table->string('debut');
+            $table->string('fin');
         });
     }
 
