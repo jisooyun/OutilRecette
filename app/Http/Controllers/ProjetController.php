@@ -82,6 +82,18 @@ class ProjetController extends Controller
     public function edit($id)
     {
         //
+        $projet = Projet::find($id);
+        $Metiers = Metier::all();
+
+        $metiers = [];
+        foreach($metiers as $metier){
+            if($metier->id_projet == $id){
+                array_push($metiers, $metier);
+            }
+        }
+
+
+        return view('projets.edit')->with(compact('projet', 'metiers'));
     }
 
     /**
@@ -94,6 +106,18 @@ class ProjetController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $projet = Projet::find($id);
+
+        // Projet::where('id', $id)
+        //       ->update(['name' => "bana"]);
+
+        $projet->name = $request->nom_projet;
+        $projet->gaant = $request->gaant;
+        $projet->contenu = $request->contenu;
+        $projet->graph = $request->graph;
+
+        $projet->save();
+        return redirect()->route('projets.show', $projet->id);
     }
 
     /**
