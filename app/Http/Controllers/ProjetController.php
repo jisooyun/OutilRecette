@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Projet;
 use App\Http\Requests;
 
 class ProjetController extends Controller
@@ -51,6 +51,12 @@ class ProjetController extends Controller
     public function show($id)
     {
         //
+        $projet = Projet::find($id);
+        if(!$projet) {
+            return redirect()->to('/projets');
+        }
+
+        return view('projets.show')->with(compact('projet'));
     }
 
     /**

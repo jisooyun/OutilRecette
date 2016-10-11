@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-
+use App\Compte_rendu;
+use App\Projet;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+
 
 class CompteRenduController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
+
+     /**
+     * Display the specified resource.
+     * @param  \Illuminate\Http\Request  $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('single_projet');
+      // $request->input("id");
+
+        return view('CR.index');
     }
 
     /**
@@ -25,7 +33,9 @@ class CompteRenduController extends Controller
      */
     public function create()
     {
-        return view('create_cr');
+       $users = User::all();
+
+        return view('CR.create')->with(compact('users'));
     }
 
     /**
@@ -37,6 +47,18 @@ class CompteRenduController extends Controller
     public function store(Request $request)
     {
         //
+        // $cr = new Compte_rendu;
+        //     $cr->global = $request->global;
+        //     $cr->description = $request->infos;
+        //     $post->save();
+
+            $cr = Compte_rendu::create([
+              'global' => $request->global,
+              'infos' => $request->infos,
+        ]);
+
+        return redirect('/');
+        // return redirect()->route('single_projet', $projet->id);
     }
 
     /**
@@ -47,7 +69,20 @@ class CompteRenduController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $crs = Compte_rendu::all();
+//        $crs = Compte_rendu::where('id_projet' ,$id);
+
+        $crsT = [];
+        foreach($crs as $cr){
+            if($cr->id_projet==$id){
+                array_push($crsT, $cr);
+            }
+        }
+
+
+        return view('CR.show')->with(compact('crsT'));
+
     }
 
     /**
