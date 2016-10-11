@@ -25,7 +25,8 @@ class ProjetController extends Controller
      */
     public function create()
     {
-        return view('create_projet');
+        return view('create_projet')->with(compact('projet'));
+
     }
 
     /**
@@ -36,7 +37,9 @@ class ProjetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $projet = new Projet;
+        $projet->name = $request->name;
+        $projet->save();
     }
 
     /**
