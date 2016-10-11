@@ -12,7 +12,8 @@
                         <hr />
                         <p> Liste de CR </p>
                          @foreach ($crsT as $cr)
-                            <a href="{{route('CR.single', $cr->id)}}">{{$cr->created_at}}</a> <br>
+                            {{--<a href="{{route('CR.single', $cr->id)}}">{{$cr->created_at}}</a> <br>--}}
+                            {{$cr->created_at}} <br>
                         @endforeach
                     </div>
                 </div>
