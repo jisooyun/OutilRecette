@@ -55,6 +55,7 @@ class CompteRenduController extends Controller
             $cr = Compte_rendu::create([
               'global' => $request->global,
               'infos' => $request->infos,
+              'gantt' => $request->file('gantt')->move('../public/gantt')
         ]);
 
         return redirect('/');

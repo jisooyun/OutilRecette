@@ -118,6 +118,7 @@ class ProjetController extends Controller
         $projet->gaant = $request->gaant;
         $projet->contenu = $request->contenu;
         $projet->graph = $request->graph;
+        $projet->cdcs = $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdcv2');
 
         $projet->save();
         return redirect()->route('projets.show', $projet->id);

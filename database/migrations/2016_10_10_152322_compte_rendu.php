@@ -13,7 +13,7 @@ class CompteRendu extends Migration
     public function up()
     {
         //
-        Schema::create('compte_rendu', function (Blueprint $table) {
+        Schema::create('compte_rendus', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('id_projet');
@@ -43,6 +43,6 @@ class CompteRendu extends Migration
     public function down()
     {
         //
-        Schema::drop('compte_rendu');
+        Schema::drop('compte_rendus');
     }
 }

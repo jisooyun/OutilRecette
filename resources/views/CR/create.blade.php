@@ -6,7 +6,7 @@
 
 
         <!-- {!! Form::open(['method' => 'POST']) !!} -->
-        {!! Form::open(['url' => route('CR.store'), 'method' => 'POST']) !!}
+        {!! Form::open(['url' => route('CR.store'), 'method' => 'POST', 'files' => true]) !!}
 
         <h4>PAR : {{\Illuminate\Support\Facades\Auth::user()->name}}</h4>
 
@@ -108,6 +108,14 @@
                 {!! Form::text('dimanche', null, [
                 'class' => 'form-control',
                 'placeholder' => 'Tâches effectuées']) !!}</h5>
+
+        </div>
+
+        <h3 class="text-center"> Planning de Gantt à jour </h3>
+
+        <div class="form-group">
+
+            {!! Form::file('gantt',null,['class'=>'form-control']) !!}
 
         </div>
 
