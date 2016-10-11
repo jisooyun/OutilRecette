@@ -8,7 +8,11 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    <a href="{{route('projets.create')}}">
+                      <button class="btn btn-info">
+                        Création de projet
+                      </button>
+                    </a>
                 </div>
             </div>
         </div>

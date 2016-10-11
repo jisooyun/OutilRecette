@@ -25,7 +25,7 @@ class ProjetController extends Controller
      */
     public function create()
     {
-        return view('create_projet');
+        return view('projets.create');
     }
 
     /**
@@ -37,6 +37,12 @@ class ProjetController extends Controller
     public function store(Request $request)
     {
         //
+        $projet = Projet::create([
+          'global' => $request->global,
+          'infos' => $request->infos,
+    ]);
+
+    return redirect('/');
     }
 
     /**
