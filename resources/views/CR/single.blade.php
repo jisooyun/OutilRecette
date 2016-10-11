@@ -9,11 +9,11 @@
 
                     <div class="panel-body">
                         <a href="{{route('CR.create')}}">CREER COMPTE RENDU </a>
-                        <hr />
-                        <p> Liste de CR </p>
-                         @foreach ($crsT as $cr)
-                            <a href="{{route('CR.single', $cr->id)}}">{{$cr->created_at}}</a> <br>
-                        @endforeach
+                        <hr>
+                        <p> {{$cr->created_at}} </p>
+
+                            {{$cr->infos}}
+
                     </div>
                 </div>
             </div>

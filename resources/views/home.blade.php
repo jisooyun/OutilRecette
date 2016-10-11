@@ -10,8 +10,7 @@
                 <div class="panel-body">
                     @foreach ($projets as $projet)
 
-                        <a href="{{route('projets.show', $projet->id)}}"> {{$projet->name}}</a>
-
+                        <a href="{{route('projets.show', $projet->id)}}"> {{$projet->name}}</a> <br>
 
                     @endforeach
                 </div>
