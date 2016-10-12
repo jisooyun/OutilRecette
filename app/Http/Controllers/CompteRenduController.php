@@ -74,7 +74,7 @@ class CompteRenduController extends Controller
 
         $banane = $request->invisible;
 
-
+        return redirect()->route('home.index');
         // return redirect()->route('single_projet', $projet->id);
     }
 

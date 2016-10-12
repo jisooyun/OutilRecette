@@ -2,144 +2,91 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-7">
-            <div class="panel panel-success">
-                <div class="panel-heading">Projet n°{{$projet->id}} | {{$projet->name}}
-                    <a href="{{route('projets.edit', $projet->id)}}">
-                        <span class="glyphicon glyphicon-edit pull-right" aria-hidden="true"></span>
-                    </a>
-                 </div>
+  Nom du projet : {{$projet->name}}
+  <br />
+  Créé le : {{$projet->debut}}
+  <hr />
+  Chef de projet :
+  {{Auth::user()->name}} <br />
+  Email : {{Auth::user()->email}}
 
-                <div class="panel-body">
-                      <ul>
-                        @if( $projet->gaant == 1)
-                        <p>
-                          <li>
-                            Planning de Gantt : OUI
-                          </li>
-                        </p>
-                            @else
-                              <p>
-                              <li>
-                                  Planning de Gantt : NON
-                              </li>
-                              </p>
-                        @endif
-                        @if( $projet->cdc == 1)
-                        <p>
-                          <li>
-                            Cahier des charges : OUI
-                          </li>
-                        </p>
-                            @else
-                                <p>
-                                <li>
-                                    Cahier des charges : NON
-                                </li>
-                                </p>
-                        @endif
-                        @if( $projet->contenu == 1)
-                        <p>
-                          <li>
-                            Présence de contenus : OUI
-                          </li>
-                        </p>
-                            @else
-                                <p>
-                                <li>
-                                    Présence de contenus : NON
-                                </li>
-                                </p>
-                        @endif
-                        @if( $projet->graph == 1)
-                        <p>
-                          <li>
-                            Pistes graphiques : OUI
-                          </li>
-                        </p>
-                            @else
-                                <p>
-                                <li>
-                                    Pistes graphiques: NON
-                                </li>
-                                </p>
-                        @endif
-                      </ul>
+  <hr />
+  Membre de l'equipe : <br />
+  Back :
+  @foreach($met as $metier)
+    {{$metier->membre}} : {{$metier->metier}}<br />
+  @endforeach
 
-                    <a href="{{route('CR.show', $projet->id)}}">
-                        <button class="btn btn-danger">
-                            Voir les compte rendu
-                        </button>
-                    </a>
+  <hr />
 
-                    <a href="{{route('CR.edit', $projet->id)}}">
+  Compte Rendu :
+  <br />
+  @foreach($crs as $cr)
+    <div class="panel-heading">Compte-rendu du {{$cr->created_at}}
+    </div>
 
-                        <!-- {!! Form::open(['url' => route('CR.create' , $projet->id), 'method' => 'PUT']) !!} -->
-                        <!-- {{ Form::hidden('invisible', $projet->id) }} -->
-                        <button class="btn btn-info">
-                            <!-- {!! Form::submit('Faire un compte rendu', ['class' => 'btn btn-info']) !!} -->
-                            Faire un compte rendu
-                        </button>
-                    </a>
+    <div class="panel-body">
 
-                </div>
-            </div>
+        <br><br>
+        <div class="text-center">
+            <span class="label label-danger"> Informations importantes !</span>
+            <p>
+                {{$cr->infos}}
+            </p>
         </div>
 
+        <br><br>
+        <div class="alert alert-info text-center" role="alert"> GLOBAL </div>
 
+        <p>{{$cr->global}} </p><br>
 
-            <div class="col-md-5">
-            <div class="panel panel-warning">
-                <div class="panel-heading"> Equipe
-                    <a href="{{route('metier.show', $projet->id)}}">
-                        <span class="glyphicon glyphicon-edit pull-right" aria-hidden="true"></span>
-                    </a> </div>
-                <div class="panel-body">
-                  @foreach ($metiers as $metier)
-                    - {{$metier->membre}} : {{$metier->metier}}
-                  @endforeach
-                    <!-- - premier métier : nom du membre <br>
-                    - deuxième métier : nom du membre <br> -->
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Point positif de la semaine :<br>
+        {{$cr->positif}}<br>
 
-                </div>
-        </div>
-                </div>
+        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Point négatif de la semaine :
+        <br>
+        {{$cr->negatif}} <br><br>
 
-                <div class="col-md-5">
-                <div class="panel panel-danger">
-                    <div class="panel-heading"><a href=""> Générer un bon de livraison </a></div>
-                </div>
-              </div>
-              <div class="col-md-5">
-              <div class="panel panel-danger">
-                  <div class="panel-heading"><a href="{{route('recettage.show', $rojet->id)}}"> Générer un cahier de recettage </a></div>
-              </div>
-              </div>
-
-            <div class="col-md-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading"> Liste des compte-rendus
-                        <a href="{{route('projets.edit', $projet->id)}}">
-                            <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
-                        </a>
-                    </div>
-
-                    <div class="panel-body">
-
-                        @foreach ($crsT as $cr)
-
-                            <a href="{{route('CR.single.show', [$cr->id , $cr->id_projet])}}">
-                                compte rendu n°{{$cr->id}} |  {{$cr->created_at}}
-                            </a>
-                            <br>
-
-                        @endforeach
-                    </div>
-                </div>
+        <div class="alert alert-warning text-center" role="alert"> CYCLE </div>
+        <ul class="list-group">
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">Lundi</h4>
+                <p class="list-group-item-text">{{$cr->lundi}}</p>
             </div>
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">Mardi</h4>
+                <p class="list-group-item-text">{{$cr->mardi}}</p>
+            </div>
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">Mercredi</h4>
+                <p class="list-group-item-text">{{$cr->mercredi}}</p>
+            </div>
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">Jeudi</h4>
+                <p class="list-group-item-text">{{$cr->jeudi}}</p>
+            </div>
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">Vendredi</h4>
+                <p class="list-group-item-text">{{$cr->vendredi}}</p>
+            </div>
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">Samedi</h4>
+                <p class="list-group-item-text">{{$cr->samedi}}</p>
+            </div>
+            <div class="list-group-item">
+                <h4 class="list-group-item-heading">Dimanche</h4>
+                <p class="list-group-item-text">{{$cr->dimanche}}</p>
+            </div>
+        </ul>
+
+        <div class="alert alert-danger text-center" role="alert"> A RECEVOIR DE LA PART DU CLIENT </div>
+        <p>{{$cr->client}}</p>
+
+        <div class="alert alert-success text-center" role="alert"> PLANNING DE GANTT A JOUR </div>
+        {{$cr->gantt}}
 
     </div>
+  @endforeach
 </div>
 
 @endsection

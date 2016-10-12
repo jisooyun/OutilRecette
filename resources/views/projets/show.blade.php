@@ -95,11 +95,16 @@
                     <div class="panel-heading"><a href="{{route('bonlivraison.index')}}"> Générer un bon de livraison </a></div>
                 </div>
             </div>
+            <div class="col-md-5">
+              <div class="panel panel-info">
+                  <div class="panel-heading"><a target="_blank" href="{{route('recettage.show', $projet->id)}}">  Cahier de Recettage </a></div>
+              </div>
+            </div>
 
             <div class="col-md-12">
                 <div class="panel panel-info">
                     <div class="panel-heading"> Liste des compte-rendus
-                        <a href="{{route('projets.edit', $projet->id)}}">
+                        <a href="{{route('projets.create', $projet->id)}}">
                             <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                         </a>
                     </div>
@@ -109,7 +114,9 @@
                         @foreach ($crsT as $cr)
 
                             <a href="{{route('CR.single.show', [$cr->id , $cr->id_projet])}}">
-                                compte rendu n°{{$cr->id}} |  {{$cr->created_at}}
+                                compte rendu n°{{$cr->id}} |  {{$cr->created_at}}  <a href="{{route('CR.edit', $projet->id)}}">
+                                    <span class="glyphicon glyphicon-edit pull-right" aria-hidden="true"></span>
+                                </a>
                             </a>
                             <br>
 

@@ -16,9 +16,12 @@
     @if($projet->cdc == 0)
     <h5>Oui {!!  Form::radio('cdc', '1') !!}
         Non {!!  Form::radio('cdc', '0', true) !!}</h5>
+    @else
+    <h5>Oui {!!  Form::radio('cdc', '1', true) !!}
+        Non {!!  Form::radio('cdc', '0') !!}</h5>
     @endif
 </div>
-@if($projet->cdcs == 'empty')
+@if(!$projet->cdcs)
     <div class="form-group">
         {!! Form::file('cdcs', null,['class'=>'form-control']) !!}
     </div>
@@ -54,26 +57,6 @@
     <h5>Oui {!!  Form::radio('graph', '1', true) !!}
         Non {!!  Form::radio('graph', '0') !!}</h5>
     @endif
-</div>
-
-<h4>Chef de projet</h4>
-<div class="form-group">
-    {!! Form::text('nom', null, [
-    'class' => 'form-control',
-    'placeholder' => 'NOM']) !!}
-
-</div>
-<!-- <h5>
-    Graphiste {!!  Form::radio('metier', 'Graphiste') !!}
-    Dev-front {!!  Form::radio('metier', 'front') !!}
-    Dev-back {!!  Form::radio('metier', 'back') !!}
-    UX {!! Form::radio('metier', 'UX' ) !!}
-</h5> -->
-{{ Form::hidden('role', '1' ) }}
-<div class="form-group">
-    {!! Form::text('mail', null, [
-    'class' => 'form-control',
-    'placeholder' => 'Email']) !!}
 </div>
 
 
