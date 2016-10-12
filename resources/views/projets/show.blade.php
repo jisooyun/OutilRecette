@@ -92,7 +92,7 @@
 
                 <div class="col-md-5">
                 <div class="panel panel-danger">
-                    <div class="panel-heading"><a href=""> Générer un bon de livraison </a></div>
+                    <div class="panel-heading"><a href="{{route('bonlivraison.index')}}"> Générer un bon de livraison </a></div>
                 </div>
             </div>
 
