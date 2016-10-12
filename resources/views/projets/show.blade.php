@@ -115,7 +115,7 @@
             <div class="col-md-12">
                 <div class="panel panel-info">
                     <div class="panel-heading"> Liste des compte-rendus
-                        <a href="{{route('CR.create')}}">
+                        <a href="{{route('CR.edit')}}">
                             <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                         </a>
                     </div>
