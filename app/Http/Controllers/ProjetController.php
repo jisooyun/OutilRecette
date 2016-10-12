@@ -38,7 +38,7 @@ class ProjetController extends Controller
     public function store(Request $request)
     {
 
-
+        if($request->file('cdcs')){
         $projet = Projet::create([
           'name' => $request->nom_projet,
           'gaant' => $request->gaant,
@@ -48,13 +48,54 @@ class ProjetController extends Controller
           'debut' => $request->debut,
           'fin' => $request->fin,
           'archive' => 0,
-            'cdcs' => $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdc')
-
+          'cdcs' => $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdc')
         ]);
+      }else{
+        $projet = Projet::create([
+          'name' => $request->nom_projet,
+          'gaant' => $request->gaant,
+          'cdc' => $request->cdc,
+          'contenu' => $request->contenu,
+          'graph' => $request->graph,
+          'debut' => $request->debut,
+          'fin' => $request->fin,
+          'archive' => 0
+        ]);
+      }
 
+      if($request->metier == 'Graphiste'){
         $membre = Metier::create([
             'membre' => $request->nom,
+            'mail' => $request->mail,
+            'projet' => $request->nom_projet,
+            'role' => $request->role,
+            'metier' => 'Graphiste'
         ]);
+      }elseif($request->metier == 'front'){
+        $membre = Metier::create([
+            'membre' => $request->nom,
+            'mail' => $request->mail,
+            'projet' => $request->nom_projet,
+            'role' => $request->role,
+            'metier' => 'front'
+        ]);
+      }elseif($request->metier == 'back'){
+        $membre = Metier::create([
+            'membre' => $request->nom,
+            'mail' => $request->mail,
+            'projet' => $request->nom_projet,
+            'role' => $request->role,
+            'metier' => 'back'
+        ]);
+      }else{
+        $membre = Metier::create([
+            'membre' => $request->nom,
+            'mail' => $request->mail,
+            'projet' => $request->nom_projet,
+            'role' => $request->role,
+            'metier' => 'UX'
+        ]);
+      }
 
     return redirect('/');
     }

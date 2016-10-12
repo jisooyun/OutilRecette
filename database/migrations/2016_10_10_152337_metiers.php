@@ -17,6 +17,9 @@ class Metiers extends Migration
             $table->increments('id');
             $table->string('membre');
             $table->string('metier');
+            $table->string('mail');
+            $table->string('projet');
+            $table->boolean('role');
         });
     }
 
