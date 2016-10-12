@@ -110,6 +110,14 @@ class ProjetController extends Controller
     public function show($id)
     {
         $crs = Compte_rendu::all();
+        $Metiers = Metier::all();
+
+        $metiers = [];
+        foreach($Metiers as $Metier){
+            if($Metier->projet==$id){
+                array_push($metiers, $Metier);
+            }
+        }
 
         $crsT = [];
         foreach($crs as $cr){
@@ -126,7 +134,7 @@ class ProjetController extends Controller
         $membre = Metier::find($id);
 
 
-        return view('projets.show')->with(compact('projet', 'crsT'));
+        return view('projets.show')->with(compact('projet', 'crsT', 'metiers'));
     }
 
     /**

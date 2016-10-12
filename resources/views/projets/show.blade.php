@@ -92,12 +92,15 @@
             <div class="col-md-5">
             <div class="panel panel-warning">
                 <div class="panel-heading"> Equipe
-                    <a href="{{route('projets.edit', $projet->id)}}">
+                    <a href="{{route('metier.show', $projet->id)}}">
                         <span class="glyphicon glyphicon-edit pull-right" aria-hidden="true"></span>
                     </a> </div>
                 <div class="panel-body">
-                    - premier métier : nom du membre <br>
-                    - deuxième métier : nom du membre <br>
+                  @foreach ($metiers as $metier)
+                    - {{$metier->membre}} : {{$metier->metier}}
+                  @endforeach
+                    <!-- - premier métier : nom du membre <br>
+                    - deuxième métier : nom du membre <br> -->
 
                 </div>
         </div>
