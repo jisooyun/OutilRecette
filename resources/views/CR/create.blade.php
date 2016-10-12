@@ -11,7 +11,7 @@
         <h4>PAR : {{\Illuminate\Support\Facades\Auth::user()->name}}</h4>
 
 
-        <h3 class="text-center bleu">INFOS</h3>
+        <h3 class="text-center" style="color: blue">INFOS</h3>
 
         <div class="form-group tableau">
             {!! Form::textarea('infos', null, [
