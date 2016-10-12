@@ -10,13 +10,15 @@
 
         <h4>PAR : {{\Illuminate\Support\Facades\Auth::user()->name}}</h4>
 
-        <h3 class="text-center">INFOS</h3>
 
-        <div class="form-group">
+        <h3 class="text-center bleu">INFOS</h3>
+
+        <div class="form-group tableau">
             {!! Form::textarea('infos', null, [
             'class' => 'form-control',
             'placeholder' => 'Compte rendu global du cycle']) !!}
         </div>
+
 
         <h3 class="text-center">GLOBAL</h3>
 
