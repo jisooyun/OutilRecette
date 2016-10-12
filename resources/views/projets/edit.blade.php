@@ -16,18 +16,13 @@
     @if($projet->cdc == 0)
     <h5>Oui {!!  Form::radio('cdc', '1') !!}
         Non {!!  Form::radio('cdc', '0', true) !!}</h5>
-    @else
-    <h5>Oui {!!  Form::radio('cdc', '1', true) !!}
-        Non {!!  Form::radio('cdc', '0') !!}</h5>
     @endif
 </div>
-
+@if($projet->cdcs == 'empty')
     <div class="form-group">
-
         {!! Form::file('cdcs', null,['class'=>'form-control']) !!}
-
     </div>
-
+@endif
 <div class="form-group">
     <p>Planning de Gantt</p>
     @if($projet->gaant == 0)

@@ -174,7 +174,7 @@ class ProjetController extends Controller
 
         // Projet::where('id', $id)
         //       ->update(['name' => "bana"]);
-
+        if($request->file('cdcs')){
         $projet->name = $request->nom_projet;
         $projet->gaant = $request->gaant;
         $projet->contenu = $request->contenu;
@@ -185,6 +185,16 @@ class ProjetController extends Controller
         $projet->cdcs = $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdcv2');
 
         $projet->save();
+      }else{
+        $projet->name = $request->nom_projet;
+        $projet->gaant = $request->gaant;
+        $projet->contenu = $request->contenu;
+        $projet->graph = $request->graph;
+        $projet->archive  = $request->fini;
+        $projet->debut = $request->debut;
+        $projet->fin = $request->fin;
+        $projet->save();
+      }
         return redirect()->route('projets.show', $projet->id);
     }
 
