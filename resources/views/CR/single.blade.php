@@ -20,6 +20,7 @@
                             </p>
                         </div>
 
+                        <span class="label label-default">Default</span>
 
 
 

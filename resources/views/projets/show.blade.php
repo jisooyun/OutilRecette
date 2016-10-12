@@ -67,22 +67,6 @@
                         @endif
                       </ul>
 
-                    <a href="{{route('CR.show', $projet->id)}}">
-                        <button class="btn btn-danger">
-                            Voir les compte rendu
-                        </button>
-                    </a>
-
-                    <a href="{{route('CR.edit', $projet->id)}}">
-
-                        <!-- {!! Form::open(['url' => route('CR.create' , $projet->id), 'method' => 'PUT']) !!} -->
-                        <!-- {{ Form::hidden('invisible', $projet->id) }} -->
-                        <button class="btn btn-info">
-                            <!-- {!! Form::submit('Faire un compte rendu', ['class' => 'btn btn-info']) !!} -->
-                            Faire un compte rendu
-                        </button>
-                    </a>
-
                 </div>
             </div>
         </div>

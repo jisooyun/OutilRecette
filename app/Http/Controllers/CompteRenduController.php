@@ -60,7 +60,6 @@ class CompteRenduController extends Controller
               'infos' => $request->infos,
               'positif' => $request->positif,
               'negatif' => $request->negatif,
-              'piece-joint' => $request->piece,
               'liens' => $request->liens,
               'lundi' => $request->lundi,
               'mardi' => $request->mardi,
@@ -70,6 +69,7 @@ class CompteRenduController extends Controller
               'samedi' => $request->samedi,
               'dimanche' => $request->dimanche,
               'client' => $request->client,
+               'gantt' => $request->file('gantt')->move('../public/gantt', $request->id.'_gantt')
         ]);
 
         return redirect('/');

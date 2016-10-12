@@ -6,7 +6,7 @@
 
 
         <!-- {!! Form::open(['method' => 'POST']) !!} -->
-        {!! Form::open(['url' => route('CR.store'), 'method' => 'POST']) !!}
+        {!! Form::open(['url' => route('CR.store'), 'method' => 'POST', 'files' => 'TRUE']) !!}
 
         <h4>PAR : {{\Illuminate\Support\Facades\Auth::user()->name}}</h4>
 
@@ -36,12 +36,6 @@
             {!! Form::text('negatif', null, [
             'class' => 'form-control',
             'placeholder' => 'Les points négatifs']) !!}
-        </div>
-
-        <div class="form-group">
-            {!! Form::text('piece', null, [
-            'class' => 'form-control',
-            'placeholder' => 'Pièces jointes']) !!}
         </div>
 
         <div class="form-group">
@@ -111,6 +105,10 @@
 
         </div>
 
+        <h3 class="text-center">GANTT A JOUR </h3>
+        <div class="form-group">
+            {!! Form::file('gantt',null,['class'=>'form-control']) !!}
+        </div>
 
         <h3 class="text-center">MÉTIER</h3>
 
