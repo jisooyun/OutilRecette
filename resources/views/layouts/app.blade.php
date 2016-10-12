@@ -15,13 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
-<<<<<<< HEAD
-    <link rel="stylesheet" type="text/css" href="../../../public/css/style.css">
-    <link rel="stylesheet" href="{{asset('../../../public/css/style.css')}}">
-=======
+
     <!-- include libraries(jQuery, bootstrap) -->
 
->>>>>>> a1692e7a33ad3ecb3adbbd33af6842c5f8d1cfa1
 
     <style>
         body {
