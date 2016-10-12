@@ -148,7 +148,7 @@ class ProjetController extends Controller
         //
         $projet = Projet::find($id);
         $Metiers = Metier::all();
-
+        
         $metiers = [];
         foreach($metiers as $metier){
             if($metier->id_projet == $id){

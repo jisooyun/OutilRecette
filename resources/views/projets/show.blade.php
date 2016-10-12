@@ -95,6 +95,11 @@
                     <div class="panel-heading"><a href=""> Générer un bon de livraison </a></div>
                 </div>
             </div>
+            <div class="col-md-5">
+              <div class="panel panel-info">
+                  <div class="panel-heading"><a target="_blank" href="{{route('recettage.show', $projet->id)}}">  Cahier de Recettage </a></div>
+              </div>
+            </div>
 
             <div class="col-md-12">
                 <div class="panel panel-info">
