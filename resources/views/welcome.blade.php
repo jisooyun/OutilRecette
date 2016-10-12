@@ -13,6 +13,8 @@
                         Création de projet
                       </button>
                     </a>
+
+                    <a href="{{route('bonlivraison.index')}}">BON DE LIVRAISON </a>
                 </div>
             </div>
         </div>
