@@ -20,7 +20,7 @@
 
         <div class="col-md-6">
             <div class="panel panel-danger">
-                <div class="panel-heading"> Projets en cours </div>
+                <div class="panel-heading"> Projets archivés </div>
                 <div class="panel-body">
                     @foreach ($projets as $projet)
                         @if($projet->archive == 1)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Metier;
 use Illuminate\Http\Request;
 use App\Projet;
+use App\Compte_rendu;
 use App\Http\Requests;
 
 class ProjetController extends Controller
@@ -67,7 +68,15 @@ class ProjetController extends Controller
      */
     public function show($id)
     {
-        //
+        $crs = Compte_rendu::all();
+
+        $crsT = [];
+        foreach($crs as $cr){
+            if($cr->id_projet==$id){
+                array_push($crsT, $cr);
+            }
+        }
+
         $projet = Projet::find($id);
         if(!$projet) {
             return redirect()->to('/projets');
@@ -76,7 +85,7 @@ class ProjetController extends Controller
         $membre = Metier::find($id);
 
 
-        return view('projets.show')->with(compact('projet'));
+        return view('projets.show')->with(compact('projet', 'crsT'));
     }
 
     /**
