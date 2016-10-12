@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Metier;
 use Illuminate\Http\Request;
 use App\Projet;
+use App\Compte_rendu;
 use App\Http\Requests;
 
 class ProjetController extends Controller
@@ -38,7 +39,7 @@ class ProjetController extends Controller
     public function store(Request $request)
     {
 
-
+        if($request->file('cdcs')){
         $projet = Projet::create([
           'name' => $request->nom_projet,
           'gaant' => $request->gaant,
@@ -48,15 +49,56 @@ class ProjetController extends Controller
           'debut' => $request->debut,
           'fin' => $request->fin,
           'archive' => 0,
-            'cdcs' => $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdc')
-
+          'cdcs' => $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdc')
         ]);
+      }else{
+        $projet = Projet::create([
+          'name' => $request->nom_projet,
+          'gaant' => $request->gaant,
+          'cdc' => $request->cdc,
+          'contenu' => $request->contenu,
+          'graph' => $request->graph,
+          'debut' => $request->debut,
+          'fin' => $request->fin,
+          'archive' => 0
+        ]);
+      }
 
+      if($request->metier == 'Graphiste'){
         $membre = Metier::create([
             'membre' => $request->nom,
+            'mail' => $request->mail,
+            'projet' => $request->nom_projet,
+            'role' => $request->role,
+            'metier' => 'Graphiste'
         ]);
+      }elseif($request->metier == 'front'){
+        $membre = Metier::create([
+            'membre' => $request->nom,
+            'mail' => $request->mail,
+            'projet' => $request->nom_projet,
+            'role' => $request->role,
+            'metier' => 'front'
+        ]);
+      }elseif($request->metier == 'back'){
+        $membre = Metier::create([
+            'membre' => $request->nom,
+            'mail' => $request->mail,
+            'projet' => $request->nom_projet,
+            'role' => $request->role,
+            'metier' => 'back'
+        ]);
+      }else{
+        $membre = Metier::create([
+            'membre' => $request->nom,
+            'mail' => $request->mail,
+            'projet' => $request->nom_projet,
+            'role' => $request->role,
+            'metier' => 'UX'
+        ]);
+      }
 
-    return redirect('/');
+        return redirect()->route('projets.show');
     }
 
     /**
@@ -67,7 +109,23 @@ class ProjetController extends Controller
      */
     public function show($id)
     {
-        //
+        $crs = Compte_rendu::all();
+        $Metiers = Metier::all();
+
+        $metiers = [];
+        foreach($Metiers as $Metier){
+            if($Metier->projet==$id){
+                array_push($metiers, $Metier);
+            }
+        }
+
+        $crsT = [];
+        foreach($crs as $cr){
+            if($cr->id_projet==$id){
+                array_push($crsT, $cr);
+            }
+        }
+
         $projet = Projet::find($id);
         if(!$projet) {
             return redirect()->to('/projets');
@@ -76,7 +134,7 @@ class ProjetController extends Controller
         $membre = Metier::find($id);
 
 
-        return view('projets.show')->with(compact('projet'));
+        return view('projets.show')->with(compact('projet', 'crsT', 'metiers'));
     }
 
     /**
@@ -116,7 +174,7 @@ class ProjetController extends Controller
 
         // Projet::where('id', $id)
         //       ->update(['name' => "bana"]);
-
+        if($request->file('cdcs')){
         $projet->name = $request->nom_projet;
         $projet->gaant = $request->gaant;
         $projet->contenu = $request->contenu;
@@ -127,6 +185,16 @@ class ProjetController extends Controller
         $projet->cdcs = $request->file('cdcs')->move('../public/pdf', $request->nom_projet.'_cdcv2');
 
         $projet->save();
+      }else{
+        $projet->name = $request->nom_projet;
+        $projet->gaant = $request->gaant;
+        $projet->contenu = $request->contenu;
+        $projet->graph = $request->graph;
+        $projet->archive  = $request->fini;
+        $projet->debut = $request->debut;
+        $projet->fin = $request->fin;
+        $projet->save();
+      }
         return redirect()->route('projets.show', $projet->id);
     }
 

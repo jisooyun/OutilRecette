@@ -60,11 +60,24 @@
         Non {!!  Form::radio('graph', '0', true) !!}</h5>
 </div>
 
-    <h4>ÉQUIPE</h4>
+    <h4>Chef de projet</h4>
     <div class="form-group">
         {!! Form::text('nom', null, [
         'class' => 'form-control',
-        'placeholder' => 'NOM 1']) !!}
+        'placeholder' => 'NOM']) !!}
+
+    </div>
+    <!-- <h5>
+        Graphiste {!!  Form::radio('metier', 'Graphiste') !!}
+        Dev-front {!!  Form::radio('metier', 'front') !!}
+        Dev-back {!!  Form::radio('metier', 'back') !!}
+        UX {!! Form::radio('metier', 'UX' ) !!}
+    </h5> -->
+    {{ Form::hidden('role', '1' ) }}
+    <div class="form-group">
+        {!! Form::text('mail', null, [
+        'class' => 'form-control',
+        'placeholder' => 'Email']) !!}
     </div>
 
 

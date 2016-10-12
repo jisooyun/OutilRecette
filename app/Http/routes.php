@@ -20,7 +20,8 @@ Route::auth();
 // Route::get('/create_cr/{id}', 'CompteRenduController@index');
 Route::resource('/CR', 'CompteRenduController');
 Route::resource('/CR.single', 'CompteRenduController@single');
-
+Route::resource('/metier', 'MetiersController');
+Route::resource('/recettage', 'CahierRecettageController');
 // create_cr/create
 
 Route::resource('/projets', 'ProjetController');

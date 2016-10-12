@@ -12,6 +12,10 @@ class Metier extends Model
 
     protected $fillable = [
         'membre',
-        'metier'
+        'metier',
+        'mail',
+        'projet',
+        'role'
+
     ];
 }
