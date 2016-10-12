@@ -11,21 +11,21 @@
         <h4>PAR : {{\Illuminate\Support\Facades\Auth::user()->name}}</h4>
 
 
-        <h3 class="text-center" style="color: blue">INFOS</h3>
+        <h3 class="" style="margin-left: 8%">Informations Importantes</h3>
 
-        <div class="form-group tableau">
+        <div class="form-group" style="width: 40%; float: left;">
             {!! Form::textarea('infos', null, [
             'class' => 'form-control',
-            'placeholder' => 'Compte rendu global du cycle']) !!}
+            'placeholder' => 'Compte rendu des informations importantes du cycle']) !!}
         </div>
 
 
-        <h3 class="text-center">GLOBAL</h3>
+        <h3 class="text-center" style="margin-top: -40px; margin-right: 10%; float: right;">Informations Globales</h3>
 
-        <div class="form-group">
+        <div class="form-group" style="width: 40%; float: right; margin-top: -3px;">
             {!! Form::textarea('global', null, [
             'class' => 'form-control',
-            'placeholder' => 'Compte rendu global du cycle']) !!}
+            'placeholder' => 'Compte rendu des informations globales du cycle']) !!}
         </div>
         <div class="form-group">
             {!! Form::text('positif', null, [
