@@ -98,7 +98,7 @@ class ProjetController extends Controller
         ]);
       }
 
-        return redirect()->route('projets.show');
+        return redirect()->route('home.index');
     }
 
     /**
@@ -148,7 +148,7 @@ class ProjetController extends Controller
         //
         $projet = Projet::find($id);
         $Metiers = Metier::all();
-        
+
         $metiers = [];
         foreach($metiers as $metier){
             if($metier->id_projet == $id){
@@ -174,7 +174,8 @@ class ProjetController extends Controller
 
         // Projet::where('id', $id)
         //       ->update(['name' => "bana"]);
-        if($request->file('cdcs')){
+        if($request->file('cdcs') == " "){
+        $projet->cdc = $request->cdc;
         $projet->name = $request->nom_projet;
         $projet->gaant = $request->gaant;
         $projet->contenu = $request->contenu;
@@ -186,6 +187,7 @@ class ProjetController extends Controller
 
         $projet->save();
       }else{
+        $projet->cdc = $request->cdc;
         $projet->name = $request->nom_projet;
         $projet->gaant = $request->gaant;
         $projet->contenu = $request->contenu;

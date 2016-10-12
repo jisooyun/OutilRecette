@@ -70,6 +70,7 @@ class MetiersController extends Controller
         ]);
       }
 
-    return redirect('/');
+      return redirect()->route('home.index');
+    // return redirect('home.inde');
     }
 }
