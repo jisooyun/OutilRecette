@@ -5,7 +5,11 @@
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-success">
-                <div class="panel-heading "> Projets en cours </div>
+                <div class="panel-heading"> Projets en cours
+                    <a href="{{route('projets.create')}}">
+                        <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
+                    </a>
+                </div>
 
                 <div class="panel-body">
                     @foreach ($projets as $projet)

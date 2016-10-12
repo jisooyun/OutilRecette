@@ -57,7 +57,7 @@ class ProjetController extends Controller
             'membre' => $request->nom,
         ]);
 
-    return redirect('/');
+        return redirect()->route('projets.show');
     }
 
     /**

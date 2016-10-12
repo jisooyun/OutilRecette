@@ -46,9 +46,9 @@ class CompteRenduController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+
         // $cr = new Compte_rendu;
         //     $cr->global = $request->global;
         //     $cr->description = $request->infos;
@@ -72,7 +72,9 @@ class CompteRenduController extends Controller
                'gantt' => $request->file('gantt')->move('../public/gantt', $request->id.'_gantt')
         ]);
 
-        return redirect('/');
+        $banane = $request->invisible;
+
+
         // return redirect()->route('single_projet', $projet->id);
     }
 
